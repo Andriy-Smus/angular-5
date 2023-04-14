@@ -1,0 +1,39 @@
+<h2>Count of Task {{ countTask }} </h2>
+<div class="box">
+    <input type="text" class="box--input-task" [(ngModel)]="addTask" (input)="writeTask()">
+    <input type="button" value="Add" class="box--bt-add" (click)="createTask()" [disabled]="addStatus">
+</div>
+<div class="container">
+    <table>
+        <thead>
+            <th class="th-num">#</th>
+            <th class="th-task">Task</th>
+            <th class="th-check">Check</th>
+            <th class="th-done">DONE/IN PROGRESS</th>
+            <th class="th-edit">Edit</th>
+            <th class="th-delete">Delete</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of taskData; index as i">
+                <td> {{ i+1 }} </td>
+                <td> {{ taskData[i].task }} </td>
+                <td>
+                    <div class="checkbox" (click)="isCheckbox(i)">
+                        <i class="uil uil-check" [class.show]="taskData[i].status"></i>
+                    </div>
+                </td>
+                <td *ngIf="taskData[i].status" [ngStyle]="{'color': 'green'}">Done</td>
+                <td *ngIf="!taskData[i].status" [ngStyle]="{'color': 'red'}">In PROGRESS</td>
+                <td><input type="button" value="Edit" class="bt-edit" (click)="editTask(i)" [disabled]="taskData[i].status"></td>
+                <td><input type="button" value="Delete" class="bt-delete" (click)="deleteTask(i)" [disabled]="!taskData[i].status"></td>
+            </tr>
+            <tr *ngIf="editStatus">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="text" class="change-task" [(ngModel)]="changeTask"></td>
+                <td><input type="button" value="save" class="bt-save" (click)="addChange()"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

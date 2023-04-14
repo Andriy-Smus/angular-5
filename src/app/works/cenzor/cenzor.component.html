@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="cenzor">
+        <h2 class="bad-words">Bad words: <b class="some-words">{{ badWords }}</b></h2>
+        <form name="f1">
+            <input type="text" placeholder="{{ placeholder }}" class="add-words" [class.red]="isRed"  [(ngModel)]="addWords" name="add-words">
+            <input type="button" value="Add" class="bt-add" (click)="btAdd()">
+            <input type="button" value="Reset" class="bt-reset" (click)="btReset()">
+        </form>
+        <form name="f2">
+            <textarea class="some-text" placeholder="{{ placeholder2 }}" [class.red]="isRed2" name="some-text" [(ngModel)]="textArea"></textarea>
+            <input type="button" value="Cenzor" class="bt-cenzor" (click)="btCenzor()">
+        </form>
+    </div>
+</div>

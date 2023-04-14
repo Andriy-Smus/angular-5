@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="container-1">
+        <form name="f1">
+            <h2>Login</h2>
+            <input type="text" name="login" placeholder="Enter login" class="input" [(ngModel)]="userLogin">
+            <h2>Password</h2>
+            <input type="password" name="password" placeholder="Enter password" class="input" [(ngModel)]="userPassword">
+            <h2>Email address</h2>
+            <input type="email" name="email" placeholder="Enter email" class="input" [(ngModel)]="userEmail">
+            <input *ngIf="!editStatus" type="button" class="bt-add-user" value="Add user" name="addUser" (click)="addUser()">
+            <input *ngIf="editStatus" type="button" class="bt-edit-user" value="Save edit user" name="editUser" (click)="saveEditUser()">
+        </form>
+    </div>
+    <div class="container-2">
+        <table>
+            <thead class="heading">
+                <tr>
+                    <th class="h-num">#</th>
+                    <th class="h-login">Login</th>
+                    <th class="h-password">Password</th>
+                    <th class="h-email">Email</th>
+                    <th class="h-edit">Edit</th>
+                    <th class="h-delete">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let us of userData; index as i">
+                    <td class="text-num"> {{ i+1 }} </td>
+                    <td class="text-login"> {{ us.login }} </td>
+                    <td class="text-password"> {{ us.password }} </td>
+                    <td class="text-email"> {{ us.email }} </td>
+                    <td><button class="bt-edit" (click)="editUser(i)">Edit</button></td>
+                    <td><button class="bt-delete" (click)="deleteUser(i)" [disabled] = "editStatus">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

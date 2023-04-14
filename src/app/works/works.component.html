@@ -1,0 +1,12 @@
+<header>
+    <div class="navbar">
+        <h3>Last works >>></h3>
+        <button [routerLink]="[ '/works/cenzor' ]" routerLinkActive="active">Cenzor</button>
+        <button [routerLink]="[ '/works/userlist' ]" routerLinkActive="active">Users</button>
+        <button [routerLink]="[ '/works/tasklist' ]" routerLinkActive="active">Task</button>
+    </div>
+    <div class="bt-home" [routerLink]="[ '/home' ]">Back to >>> Home</div>
+</header>
+
+<router-outlet></router-outlet>
+
